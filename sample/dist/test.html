@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p>下面是嵌入的内容</p>
+<br>
+<p>1. 路径格式template/header.html，相对root的路径；<br>如未配置root，则视为相对当前文件的路径；</p>
+<p>这是嵌入的内容</p>
+
+<p>2. 路径格式/template/header.html，如配置过root，则视为相对root的路径；<br>如未配置root，则视为绝对路径</p>
+<p>这是嵌入的内容</p> 
+
+<p>3. 路径格式./../template/header.html，以./开头，视为 相对当前文件路径</p>
+<p>这是嵌入的内容</p>
+</body>
+</html>
