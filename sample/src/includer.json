@@ -1,4 +1,5 @@
 {
     "root" : "../",
-    "outputPath" : "dist/"
+    "outputPath" : "dist/",
+    "changeURL" : true
 }

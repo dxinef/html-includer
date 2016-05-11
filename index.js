@@ -17,7 +17,8 @@ if(thisFile_parse.ext != ".html" && thisFile_parse.ext != ".htm") {
 
 //// 查找config文件，如不存在则进行初始化
 var config = require("./lib/config.js")(thisFile_parse.dir),
-    pathParse = require("./lib/parsePath.js")(thisFile_parse.dir);
+    pathParse = require("./lib/parsePath.js")(thisFile_parse.dir),
+    htmlUrlReplace = config.changeURL ? require("./lib/htmlUrlReplace.js") : function(html) {return html};
 
 //// 根路径
 var rootPath = pathParse.rootPath;
@@ -28,24 +29,26 @@ var outputPath = pathParse.parse(config.outputPath),
     outputFile_parse = path.parse(outputFile);
 
 // 读取当前html文件
-var thisFileContent = fs.readFileSync(thisFile, "utf8");
+// 修改html文件中的url
+var thisFileContent = htmlUrlReplace(fs.readFileSync(thisFile, "utf8"), thisFile_parse.dir, outputPath);
 
 // 匹配与替换
 var outputContent = thisFileContent.replace(
-    /\<\!\-\-\s*@include\s*\[\s*(.*?)\s*\]\s*\-\-\>/g,
-    function(match, includeFile){
-        var r = "",
-            p = pathParse.parse(includeFile);
-        try {
-            r = fs.readFileSync(p, "utf8");
-            console.log("load \"", p, "\" success! (^_^)");
+        /\<\!\-\-\s*@include\s*\[\s*(.*?)\s*\]\s*\-\-\>/g,
+        function(match, includeFile){
+            var r = "",
+                p = pathParse.parse(includeFile);
+            try {
+                // 读取嵌入文件，并替换url
+                r = htmlUrlReplace(fs.readFileSync(p, "utf8"), p, outputPath);
+                console.log("load \"", p, "\" success! (^_^)");
+            }
+            catch(e) {   
+                console.log("load \"", p, "\" fail! (O_O)");
+            }
+            return r;
         }
-        catch(e) {   
-            console.log("load \"", p, "\" fail! (O_O)");
-        }
-        return r;
-    }
-);
+    );
 
 // 输出文件
 fs.exists(outputFile_parse.dir, function(exists){

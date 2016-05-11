@@ -16,7 +16,8 @@ HTML内容嵌入
 	```
     {
 	    "root" : "e:/test/sbtTest/",
-	    "outputPath" : "output1/"
+	    "outputPath" : "output1/",
+        "replaceURL" : true
     }
 	```
 	2.2. 参数说明：  
@@ -25,12 +26,14 @@ HTML内容嵌入
 		嵌入路径以/开头，如已配置root，视为相对root为根目录的路径；若未配置root，视为绝对路径；  
 		路径以./开头，强制相对当前文件；  
 		以盘符开头的绝对路径，忽略root设置；  
-		路径为其他规则的相对路径，相对于root；如未配置root，则相对当前文件；  
-	2.3. 如无配置文件，则视为
+		路径为其他规则的相对路径，相对于root；如未配置root，则相对当前文件； 
+    2.3. replaceURL 是否替换当前文件与嵌入文件中的URL为相对输出文件的URL
+	2.4. 如无配置文件，则视为
 	```
 	{
 	    "root" : "",
-	    "outputPath" : ""
+	    "outputPath" : "",
+        "replaceURL" : true
     }
 	```
 3. html中嵌入页面文件
