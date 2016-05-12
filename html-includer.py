@@ -14,6 +14,7 @@ class HtmlIncluderCommand(sublime_plugin.TextCommand):
 
         ## show output pannel
         panel = self.view.window().create_output_panel('myOutput')
+        panel.assign_syntax("Packages/Text/Plain text.tmLanguage")
         panel.set_read_only(False)
         panel.insert(edit, 0, "HTML-Includer run! \n")
 
