@@ -30,7 +30,7 @@ var outputPath = pathParse.parse(config.outputPath),
 
 // 读取当前html文件
 // 修改html文件中的url
-var thisFileContent = htmlUrlReplace(fs.readFileSync(thisFile, "utf8"), thisFile_parse.dir, outputPath);
+var thisFileContent = htmlUrlReplace(fs.readFileSync(thisFile, "utf8"), rootPath, outputPath);
 
 // 匹配与替换
 var outputContent = thisFileContent.replace(
