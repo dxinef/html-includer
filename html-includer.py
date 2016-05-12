@@ -16,11 +16,9 @@ class HtmlIncluderCommand(sublime_plugin.TextCommand):
         panel = self.view.window().create_output_panel('myOutput')
         panel.set_read_only(False)
         panel.insert(edit, 0, "HTML-Includer run! \n")
-        panel.insert(edit, 0, thisPackagePath + "\n")
 
         ## subprocess run cmd
         cmd = "node \"" + thisPackagePath + "\\index.js\" \"" + thisfilename + "\""
-        panel.insert(edit, 0, cmd + "\n")
         output_lines = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, startupinfo=None, env=None, shell=True).stdout
         for line in output_lines:
             line = line.strip().decode("utf-8")
