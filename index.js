@@ -40,7 +40,7 @@ var outputContent = thisFileContent.replace(
                 p = pathParse.parse(includeFile);
             try {
                 // 读取嵌入文件，并替换url
-                r = htmlUrlReplace(fs.readFileSync(p, "utf8"), p, outputPath);
+                r = htmlUrlReplace(fs.readFileSync(p, "utf8"), p, outputPath, config.root);
                 console.log("load \"", p, "\" success! (^_^)");
             }
             catch(e) {   

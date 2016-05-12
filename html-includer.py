@@ -19,7 +19,7 @@ class HtmlIncluderCommand(sublime_plugin.TextCommand):
 
         ## subprocess run cmd
         cmd = "node \"" + thisPackagePath + "\\index.js\" \"" + thisfilename + "\""
-        # panel.insert(edit, panel.size(), cmd + "\n")
+        #panel.insert(edit, panel.size(), cmd + "\n")
         output_lines = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, startupinfo=None, env=None, shell=True).stdout
         for line in output_lines:
             line = line.strip().decode("utf-8")
