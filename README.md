@@ -1,4 +1,4 @@
-### HTML INCLUDER 0.0.1 ###
+### HTML INCLUDER 0.0.2 ###
 HTML内容嵌入
 
 1. 环境要求
