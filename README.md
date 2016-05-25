@@ -1,4 +1,4 @@
-### HTML INCLUDER 0.0.3 ###
+### HTML INCLUDER 0.1.0 ###
 HTML内容嵌入
 
 1. 环境要求
@@ -51,9 +51,17 @@ HTML内容嵌入
 
 4. sublime下命令
 
-	ctrl + shift + p 调出命令面板，选择 "HTML Includer"运行即可；  
-	文件将自动保存，并按配置进行输出；
+	ctrl + shift + p 调出命令面板；  
+	选择 "HTML Includer - Build" 当前文件将自动保存，按配置构建并进行输出；  
+	选择 "HTML Includer - Build All" 当前文件将自动保存，按配置构建并输出当前文件所在文件夹下所有HTML文件；
+	
 
 5. 文件输出
 
 	如未配置outputPath，则输出在当前目录下 *.out.html，否则按配置文件输出；
+
+6. 版本更新说明
+
+	##0.1.0##  
+	重构js文件，新增“输出当前文件所在文件夹下所有HTML文件”功能；  
+	调整py文件；  

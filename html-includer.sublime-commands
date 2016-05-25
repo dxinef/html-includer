@@ -1,6 +1,16 @@
 [
     {
-        "caption" : "HTML Includer",
-        "command" : "html_includer"
+        "caption" : "HTML Includer - Build",
+        "command" : "html_includer",
+        "args" : {
+            "buildtype" : "file"
+        }
+    },
+    {
+        "caption" : "HTML Includer - Build All",
+        "command" : "html_includer",
+        "args" : {
+            "buildtype" : "dir"
+        }
     }
 ]
